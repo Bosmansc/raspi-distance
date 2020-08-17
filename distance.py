@@ -51,10 +51,12 @@ if __name__ == '__main__':
     light = LB130("192.168.0.142")
 
     light.off()
+    time.sleep(1)
     light.on()
 
     try:
         while True:
+            print("Measuring distance...")
             dist = distance()
             print("Measured Distance = %.1f cm" % dist)
 
