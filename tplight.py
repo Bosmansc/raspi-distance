@@ -69,15 +69,15 @@ class LB130(object):
                 data = json.loads(self.status())
 
                 json_formatted_str = json.dumps(data, indent=2)
-                print(json_formatted_str)
+               # print(json_formatted_str)
 
                 col1 = 'system'
                 col2 = 'get_sysinfo'
                 col3 = 'light_state'
                 col4 = 'dft_on_state'
                 self.__alias = data[col1][col2]['alias']
-                print("on_off:")
-                print(data[col1][col2][col3])
+           #     print("on_off:")
+           #     print(data[col1][col2][col3])
                 self.__on_off = int(data[col1][col2][col3]['on_off'])
 
                 if self.__on_off == 0:
@@ -150,9 +150,6 @@ class LB130(object):
         __bulb_on_off = 0
 
         print("turn light off")
-        print("{\"smartlife.iot.smartbulb.lightingservice\":{\""
-              "transition_light_state\":{\"ignore_default\":1,\"transition_period\""
-              ":" + str(self.__transition_period) + ",\"on_off\":0}}}")
 
         self.__update("{\"smartlife.iot.smartbulb.lightingservice\":{\""
                       "transition_light_state\":{\"ignore_default\":1,\"transition_period\""
@@ -453,7 +450,6 @@ class LB130(object):
         Fetch data from the device
         '''
         enc_message = self.__encrypt(message, self.encryption_key)
-        print(enc_message)
 
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

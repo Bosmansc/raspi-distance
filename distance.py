@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
             if dist > 3:
                 light.on()
-                      
+
             time.sleep(1)
  
         # Reset by pressing CTRL + C

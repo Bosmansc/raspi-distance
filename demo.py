@@ -27,8 +27,8 @@ def main():
     light.on()
     time.sleep(1)
 
-    brightness(light)
-    flashing_light(light)
+    # brightness(light)
+    # flashing_light(light)
 
 
 def flashing_light(light):
