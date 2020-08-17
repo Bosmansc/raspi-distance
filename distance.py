@@ -60,13 +60,13 @@ if __name__ == '__main__':
             dist = distance()
             print("Measured Distance = %.1f cm" % dist)
 
-            # if dist < 3:
-            #     light.off()
-            #
-            # if dist > 3:
-            #     light.on()
+            if dist < 3:
+                light.off()
 
-            time.sleep(1)
+            if dist > 3:
+                light.on()
+
+            time.sleep(0.5)
  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
