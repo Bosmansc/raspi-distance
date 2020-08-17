@@ -50,16 +50,19 @@ if __name__ == '__main__':
     # create an instance of the light with its IP address
     light = LB130("192.168.0.142")
 
+    light.off()
+    light.on()
+
     try:
         while True:
             dist = distance()
             print("Measured Distance = %.1f cm" % dist)
 
-            if dist < 3:
-                light.off()
-
-            if dist > 3:
-                light.on()
+            # if dist < 3:
+            #     light.off()
+            #
+            # if dist > 3:
+            #     light.on()
 
             time.sleep(1)
  
