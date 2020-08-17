@@ -3,7 +3,9 @@
 #Libraries
 import RPi.GPIO as GPIO
 import time
- 
+from tplight import LB130
+
+
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
  
@@ -43,10 +45,21 @@ def distance():
     return distance
  
 if __name__ == '__main__':
+
+    # create an instance of the light with its IP address
+    light = LB130("192.168.0.142")
+
     try:
         while True:
             dist = distance()
             print ("Measured Distance = %.1f cm" % dist)
+
+            if dist < 3:
+                light.off()
+
+            if dist > 3:
+                light.on()
+                      
             time.sleep(1)
  
         # Reset by pressing CTRL + C
