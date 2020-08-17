@@ -60,11 +60,13 @@ if __name__ == '__main__':
             dist = distance()
             print("Measured Distance = %.1f cm" % dist)
 
-            if dist < 3:
+            dist_threshold = 5
+
+            if dist < dist_threshold:
                 print("too close: light off")
                 light.off()
 
-            if dist > 3:
+            if dist > dist_threshold:
                 print("far enough: light on")
                 light.on()
 
