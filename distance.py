@@ -61,12 +61,14 @@ if __name__ == '__main__':
             print("Measured Distance = %.1f cm" % dist)
 
             if dist < 3:
+                print("too close: light off")
                 light.off()
 
             if dist > 3:
+                print("far enough: light on")
                 light.on()
 
-            time.sleep(0.5)
+            time.sleep(1)
  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
