@@ -19,7 +19,7 @@ if __name__ == '__main__':
             dist = sensor.get_distance()
             print("Measured Distance = %.1f cm" % dist)
 
-            if dist < dist_threshold:
+            if dist < dist_threshold_lower or dist > dist_threshold_upper:
                 print("door opens: light on for 10 seconds!")
                 plug.on()
                 time.sleep(10)
