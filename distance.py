@@ -51,7 +51,7 @@ class DistanceSensor(object):
         # and divide by 2, because there and back
         distance = (time_elpased * 34300) / 2
 
-        return distance
+        return round(distance, 2)
 
 
 if __name__ == '__main__':

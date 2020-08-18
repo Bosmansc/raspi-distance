@@ -1,26 +1,32 @@
-# from tplight import LB130
-# from tpplug import HS100
-#
-# if __name__ == '__main__':
-#     try:
-#         while True:
-#             print("Measuring distance...")
-#             dist = distance()
-#             print("Measured Distance = %.1f cm" % dist)
-#
-#             dist_threshold = 5
-#
-#             if dist < dist_threshold:
-#                 print("too close: light off")
-#                 light.off()
-#
-#             if dist > dist_threshold:
-#                 print("far enough: light on")
-#                 light.on()
-#
-#             time.sleep(1)
-#
-#     # Reset by pressing CTRL + C
-# except KeyboardInterrupt:
-# print("Measurement stopped by User")
-# GPIO.cleanup()
+#!/usr/bin/python
+
+# Libraries
+import RPi.GPIO as GPIO
+from tplight import LB130
+from tpplug import HS100
+from distance import DistanceSensor
+import time
+
+if __name__ == '__main__':
+    plug = HS100('192.168.0.211')
+    plug.off()
+    sensor = DistanceSensor()
+    dist_threshold = 5
+
+    try:
+        while True:
+            dist = sensor.get_distance()
+            print("Measured Distance = %.1f cm" % dist)
+
+            if dist < dist_threshold:
+                print("door opens: light on for 10 seconds!")
+                plug.on()
+                time.sleep(10)
+                plug.off()
+
+            time.sleep(1)
+
+            # Reset by pressing CTRL + C
+    except KeyboardInterrupt:
+        print("Measurement stopped by User")
+        GPIO.cleanup()
