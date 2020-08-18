@@ -11,8 +11,8 @@ if __name__ == '__main__':
     plug = HS100('192.168.0.211')
     plug.off()
     sensor = DistanceSensor()
-    dist_threshold_upper = 140
-    dist_threshold_lower = 160
+    dist_threshold_upper = 160
+    dist_threshold_lower = 140
 
     try:
         while True:
@@ -20,9 +20,6 @@ if __name__ == '__main__':
             print("Measured Distance = %.1f cm" % dist)
 
             if dist < dist_threshold_lower or dist > dist_threshold_upper:
-                print(dist)
-                print(dist_threshold_upper)
-                print(dist_threshold_lower)
                 print("door opens: light on for 10 seconds!")
                 plug.on()
                 time.sleep(10)
