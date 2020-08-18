@@ -11,7 +11,8 @@ if __name__ == '__main__':
     plug = HS100('192.168.0.211')
     plug.off()
     sensor = DistanceSensor()
-    dist_threshold = 5
+    dist_threshold_upper = 140
+    dist_threshold_lower = 160
 
     try:
         while True:
